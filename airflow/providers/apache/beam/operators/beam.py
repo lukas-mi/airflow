@@ -573,7 +573,7 @@ class BeamRunJavaPipelineOperator(BeamBasePipelineOperator):
                     print("!!!!!!!!! calling is_job_dataflow_running for beam.py execute_async")
                     
                     is_running = self.dataflow_hook.is_job_dataflow_running(
-                        project_id=self.dataflow_config.project,
+                        project_id=self.dataflow_config.project_id,
                         name=self.dataflow_config.job_name,
                         variables=self.pipeline_options,
                         location=self.dataflow_config.location
