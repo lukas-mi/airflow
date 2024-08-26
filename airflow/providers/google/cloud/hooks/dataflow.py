@@ -1071,6 +1071,8 @@ class DataflowHook(GoogleBaseHook):
         print(variables)
         print("location:\n")
         print(location)
+        print("project\n")
+        print(project_id)
         print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n")
 
         jobs_controller = _DataflowJobsController(
