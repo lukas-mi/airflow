@@ -1041,14 +1041,14 @@ class DataflowHook(GoogleBaseHook):
 
         return safe_job_name
 
-    @_fallback_to_location_from_variables
+    # @_fallback_to_location_from_variables
     @_fallback_to_project_id_from_variables
     @GoogleBaseHook.fallback_to_default_project_id
     def is_job_dataflow_running(
         self,
         name: str,
         project_id: str,
-        location: str | None,
+        location: str,
         variables: dict | None = None,
     ) -> bool:
         """
@@ -1067,6 +1067,14 @@ class DataflowHook(GoogleBaseHook):
                 AirflowProviderDeprecationWarning,
                 stacklevel=4,
             )
+
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n")
+        print('variables:\n')
+        print(variables)
+        print("location:\n")
+        print(location)
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n")
+
         jobs_controller = _DataflowJobsController(
             dataflow=self.get_conn(),
             project_number=project_id,

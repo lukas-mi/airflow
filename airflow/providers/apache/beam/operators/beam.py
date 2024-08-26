@@ -570,9 +570,12 @@ class BeamRunJavaPipelineOperator(BeamBasePipelineOperator):
                     # This method is wrapped by @_fallback_to_project_id_from_variables decorator which
                     # fallback project_id value from variables and raise error if project_id is
                     # defined both in variables and as parameter (here is already defined in variables)
+                    print("!!!!!!!!! calling is_job_dataflow_running for beam.py execute_async")
+                    
                     is_running = self.dataflow_hook.is_job_dataflow_running(
                         name=self.dataflow_config.job_name,
                         variables=self.pipeline_options,
+                        location=self.dataflow_config.location
                     )
 
                 if not is_running:
