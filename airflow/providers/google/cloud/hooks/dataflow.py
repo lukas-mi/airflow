@@ -1041,8 +1041,6 @@ class DataflowHook(GoogleBaseHook):
 
         return safe_job_name
 
-    # @_fallback_to_location_from_variables
-    @_fallback_to_project_id_from_variables
     @GoogleBaseHook.fallback_to_default_project_id
     def is_job_dataflow_running(
         self,
