@@ -278,7 +278,6 @@ class _DataflowJobsController(LoggingMixin):
         :param job_id: Job ID to get.
         :return: the Job
         """
-
         return (
             self._dataflow.projects()
             .locations()
