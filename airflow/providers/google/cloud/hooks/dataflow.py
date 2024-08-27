@@ -260,10 +260,19 @@ class _DataflowJobsController(LoggingMixin):
         :return: list of jobs including id's
         """
         if not self._multiple_jobs and self._job_id:
+            print("??????????????????\n")
+            print(f"not self._multiple_jobs and self._job_id: {[self.fetch_job_by_id(self._job_id)]}")
+            print("??????????????????\n")
             return [self.fetch_job_by_id(self._job_id)]
         elif self._jobs:
+            print("??????????????????\n")
+            print(f"self._jobs: {[self.fetch_job_by_id(self._job_id)]}")
+            print("??????????????????\n")
             return [self.fetch_job_by_id(job["id"]) for job in self._jobs]
         elif self._job_name:
+            print("??????????????????\n")
+            print(f"self._job_namee: {self._fetch_jobs_by_prefix_name(self._job_name.lower())}")
+            print("??????????????????\n")
             jobs = self._fetch_jobs_by_prefix_name(self._job_name.lower())
             if len(jobs) == 1:
                 self._job_id = jobs[0]["id"]
@@ -394,6 +403,11 @@ class _DataflowJobsController(LoggingMixin):
 
     def _fetch_jobs_by_prefix_name(self, prefix_name: str) -> list[dict]:
         jobs = self._fetch_all_jobs()
+
+        print("??????????????????\n")
+        print(f"_fetch_all_jobs: {self._fetch_all_jobs()}")
+        print("??????????????????\n")
+
         jobs = [job for job in jobs if job["name"].startswith(prefix_name)]
         return jobs
 
