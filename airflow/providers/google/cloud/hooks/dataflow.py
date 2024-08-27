@@ -279,11 +279,6 @@ class _DataflowJobsController(LoggingMixin):
         :return: the Job
         """
 
-        print("===================\n")
-        print("fetch_job_by_id:\n")
-        print(job_id)
-        print("===================\n")
-
         return (
             self._dataflow.projects()
             .locations()
@@ -1071,7 +1066,6 @@ class DataflowHook(GoogleBaseHook):
                 AirflowProviderDeprecationWarning,
                 stacklevel=4,
             )
-
         jobs_controller = _DataflowJobsController(
             dataflow=self.get_conn(),
             project_number=project_id,
