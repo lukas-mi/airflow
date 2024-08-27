@@ -580,6 +580,14 @@ class BeamRunJavaPipelineOperator(BeamBasePipelineOperator):
                         location=self.dataflow_config.location
                     )
 
+                    print("????????????\n")
+                    print(f"using project_id: {self.dataflow_config.project_id}")
+                    print(f"name: {self.dataflow_config.job_name}")
+                    print(f"variables: {self.pipeline_options}")
+                    print(f"location: {self.dataflow_config.location}")
+                    print(f"is_running: {is_running}")
+                    print("????????????\n")
+
                 if not is_running:
                     self.pipeline_options["jobName"] = self.dataflow_job_name
                     with self.dataflow_hook.provide_authorized_gcloud():
