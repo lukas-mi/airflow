@@ -1041,13 +1041,14 @@ class DataflowHook(GoogleBaseHook):
 
         return safe_job_name
 
+    @_fallback_to_location_from_variables
     @_fallback_to_project_id_from_variables
     @GoogleBaseHook.fallback_to_default_project_id
     def is_job_dataflow_running(
         self,
         name: str,
         project_id: str,
-        location: str,
+        location: str = DEFAULT_DATAFLOW_LOCATION,
         variables: dict | None = None,
     ) -> bool:
         """

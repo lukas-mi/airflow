@@ -468,7 +468,7 @@ class BeamRunPythonPipelineOperator(BeamBasePipelineOperator):
             self.dataflow_hook.cancel_job(
                 job_id=self.dataflow_job_id,
                 project_id=self.dataflow_config.project_id,
-                location=self.dataflow_config.location,
+                # location=self.dataflow_config.location,
             )
 
 
@@ -574,7 +574,7 @@ class BeamRunJavaPipelineOperator(BeamBasePipelineOperator):
                     is_running = self.dataflow_hook.is_job_dataflow_running(
                         name=self.dataflow_config.job_name,
                         variables=self.pipeline_options,
-                        location=self.dataflow_config.location
+                        # location=self.dataflow_config.location
                     )
 
                 if not is_running:
@@ -658,7 +658,7 @@ class BeamRunJavaPipelineOperator(BeamBasePipelineOperator):
             self.dataflow_hook.cancel_job(
                 job_id=self.dataflow_job_id,
                 project_id=self.dataflow_config.project_id,
-                location=self.dataflow_config.location,
+                # location=self.dataflow_config.location,
             )
 
 
@@ -810,7 +810,7 @@ class BeamRunGoPipelineOperator(BeamBasePipelineOperator):
             self.dataflow_hook.cancel_job(
                 job_id=self.dataflow_job_id,
                 project_id=self.dataflow_config.project_id,
-                location=self.dataflow_config.location,
+                # location=self.dataflow_config.location,
             )
 
 
