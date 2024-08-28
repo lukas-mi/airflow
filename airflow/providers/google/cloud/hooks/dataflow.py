@@ -1048,7 +1048,7 @@ class DataflowHook(GoogleBaseHook):
         self,
         name: str,
         project_id: str,
-        location: str = DEFAULT_DATAFLOW_LOCATION,
+        location: str | None = None,
         variables: dict | None = None,
     ) -> bool:
         """
