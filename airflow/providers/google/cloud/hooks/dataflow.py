@@ -140,7 +140,6 @@ def _fallback_variable_parameter(parameter_name: str, variable_key_name: str) ->
     return _wrapper
 
 
-_fallback_to_location_from_variables = _fallback_variable_parameter("location", "region")
 _fallback_to_project_id_from_variables = _fallback_variable_parameter("project_id", "project")
 
 
@@ -1041,18 +1040,17 @@ class DataflowHook(GoogleBaseHook):
 
         return safe_job_name
 
-    @_fallback_to_location_from_variables
     @_fallback_to_project_id_from_variables
     @GoogleBaseHook.fallback_to_default_project_id
     def is_job_dataflow_running(
         self,
         name: str,
         project_id: str,
-        location: str | None = None,
+        location: str,
         variables: dict | None = None,
     ) -> bool:
         """
-        Check if jos is still running in dataflow.
+        Check if job is still running in dataflow.
 
         :param name: The name of the job.
         :param project_id: Optional, the Google Cloud project ID in which to start a job.
@@ -1062,8 +1060,8 @@ class DataflowHook(GoogleBaseHook):
         """
         if variables:
             warnings.warn(
-                "The variables parameter has been deprecated. You should pass location using "
-                "the location parameter.",
+                "The variables parameter has been deprecated. You should pass project_id using "
+                "the project_id parameter.",
                 AirflowProviderDeprecationWarning,
                 stacklevel=4,
             )
