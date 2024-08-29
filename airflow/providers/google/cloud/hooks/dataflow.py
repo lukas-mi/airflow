@@ -71,7 +71,7 @@ DEFAULT_DATAFLOW_LOCATION = "us-central1"
 
 
 JOB_ID_PATTERN = re.compile(
-    r"Submitted job: (?P<job_id_java>[^\"\n\s]*)|Created job with id: \[(?P<job_id_python>[^\"\n\s]*)\]"
+    r"Submitted job: (?P<job_id_java>[^\"\n]*)|Created job with id: \[(?P<job_id_python>[^\"\n]*)\]"
 )
 
 T = TypeVar("T", bound=Callable)
@@ -138,6 +138,7 @@ def _fallback_variable_parameter(parameter_name: str, variable_key_name: str) ->
         return cast(T, inner_wrapper)
 
     return _wrapper
+
 
 _fallback_to_location_from_variables = _fallback_variable_parameter("location", "region")
 _fallback_to_project_id_from_variables = _fallback_variable_parameter("project_id", "project")
