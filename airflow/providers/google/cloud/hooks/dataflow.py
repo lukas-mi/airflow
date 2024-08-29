@@ -139,7 +139,7 @@ def _fallback_variable_parameter(parameter_name: str, variable_key_name: str) ->
 
     return _wrapper
 
-
+_fallback_to_location_from_variables = _fallback_variable_parameter("location", "region")
 _fallback_to_project_id_from_variables = _fallback_variable_parameter("project_id", "project")
 
 
